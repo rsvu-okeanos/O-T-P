@@ -2,4 +2,4 @@
 app/conf/config.yml filter=openssl diff=openssl
 
 [merge]
-renormalize = true
+renormalize=true
