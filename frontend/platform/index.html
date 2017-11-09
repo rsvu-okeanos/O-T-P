@@ -1,0 +1,105 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha256-mIfhv/h3MLq3WSiSlduuZO3saRNzzuf1LK8w3z3l3JY=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="platform.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Okeanos Trading Platform | Powered by: MediaCie</title>
+  </head>
+  <body class="okeanos-fix">
+    <nav class="navbar navbar-fixed-top navbar-light bg-faded">
+    </nav>
+    <div class="container-fluid">
+      <div class="title">
+        <h1>Okeanos Trading Platform</h1>
+      </div>
+
+      <div class="give-room" id="tokenDiv" hidden=true>
+        <form id="tokenForm">
+          <div class="form-group" id="tokenFormGroup">
+            <div class="input-group">
+              <div class="input-group-addon">
+                <i class="fa fa-key" aria-hidden="true"></i>
+              </div>
+              <input type="password" class="form-control" id="tokenInput" placeholder="Token">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Inloggen</button>
+        </form>
+      </div>
+
+      <div class="give-room" id="frontend" hidden=true>
+        <div id="pendingTransactions">
+          <h2>Goedkeuren <button type="button" onclick="updatePendingTransactions()" class="btn btn-outline-primary"><i class="fa fa-refresh" aria-hidden="true"></i></button></h2>
+          
+          <table class="table table-responsive" id="pendingTransactionsTable">
+            <thead>
+              <tr>
+                <th>Tegenhandelaar</th>
+                <th>Omschrijving</th>
+                <th>Aankoopprijs</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="pendingTransactionsBody">
+            </tbody>
+          </table>
+        </div>
+        <hr />
+        
+        <hr />
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tradingModal">
+          <i class="fa fa-plus-circle" aria-hidden="true"></i> Nieuwe transactie
+        </button>
+        <button type="button" class="btn btn-secondary" onclick="logout()">Uitloggen</button>
+      </div>
+
+    <footer class="footer navbar-fixed-bottom">&copy; MediaCie Projects 2017 - FH / JdB</footer>
+
+    <div class="modal fade" id="tradingModal" tabindex="-1" role="dialog" aria-labelledby="tradingModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tradingModalLabel"><i class="fa fa-plus-circle" aria-hidden="true"></i> Handelen</h5>
+          </div>
+          <div class="modal-body">
+            <div id="newTransactionDiv">
+              <form id="newTransactionForm">
+                <div class="form-group" id="transactionTargetUserGroup">
+                  <label for="transactionTargetUser">Tegenhandelaar</label>
+                  <input type="text" required data-provide="typeahead" class="form-control" id="transactionTargetUser" placeholder="Tegenhandelaar" autocomplete="off">
+                </div>
+                <div class="form-group" id="transactionDescriptionGroup">
+                  <label for="transactionDescription">Omschrijving</label>
+                  <input type="text" required class="form-control" id="transactionDescription" placeholder="Omschrijving">
+                </div>
+                <div class="form-group" id="transactionPriceGroup">
+                  <label for="transactionPrice">Verkoopprijs</label>
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      &euro;
+                    </div>
+                    <input type="number" required min="0" step="0.01" class="form-control" id="transactionPrice" placeholder="Verkoopprijs">
+                  </div>
+                  <small id="transactionPriceHelp" class="form-text text-muted">Met uw transactie sponsort u ook de MediaCie.</small>
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Sluiten</button>
+            <button type="submit" class="btn btn-primary"><i class="fa fa-money" aria-hidden="true"></i> Handelen!</button>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js" integrity="sha256-1A78rJEdiWTzco6qdn3igTBv9VupN3Q1ozZNTR4WE/Y=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha256-gL1ibrbVcRIHKlCO5OXOPC/lZz/gpdApgQAzskqqXp8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha256-j+XrvkQ4jJ99Hj0pJKPr6k0RCgxDDSTs3PBqLrX2EMc=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" integrity="sha256-LOnFraxKlOhESwdU/dX+K0GArwymUDups0czPWLEg4E=" crossorigin="anonymous"></script>
+    <script src="platform.js"></script>
+  </body>
+</html>
