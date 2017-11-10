@@ -1,5 +1,0 @@
-* text=auto
-app/conf/config.yml filter=openssl diff=openssl
-
-[merge]
-renormalize=true
