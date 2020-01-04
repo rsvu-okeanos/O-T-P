@@ -1,113 +1,127 @@
 market:
-    volatilityPerc: 0.07
-    fluctuationPerc: 0.05
+    volatilityPerc: 0.08
+    fluctuationPerc: 0.03
     reversion: 0.5
     safetyMargin: 30
     interval: 3
-    balancingFactor: 14
+    balancingFactor: 10
 system:
     cashUser: 30
     tradingProxy: 223
-    systemUrl: "{YOURHOST}"
+    systemUrl: "{your url}"
 products:
     3:
         name: Bier
-        price: 1.25
-        min: 0.60
+        price: 1.35
+        min: 0.75
         max: 2.20
-        importanceFactor: 3
+        importanceFactor: 7
         order: 1
+        reversion_periods: 300
     143:
         name: Pitcher
-        price: 8.50
-        min: 6.50
-        max: 11.00
-        importanceFactor: 0.3
+        price: 9.00
+        min: 6.00
+        max: 12.50
+        importanceFactor: 0.5
         order: 2
-    170:
-        name: Paardenkut
-        price: 10
-        min: 7.00
-        max: 15.00
-        importanceFactor: 1
-
-    148:
-        name: Amstel Radler
-        price: 1.50
-        min: 0.90
-        max: 3.00
-        importanceFactor: 1
-        order: 6
+        reversion_periods: 300
     16:
         name: Flugel
         price: 1.00
         min: 0.50
         max: 2.50
-        importanceFactor: 2
-        order: 5
+        importanceFactor: 5
+        order: 3
+        reversion_periods: 200
     9:
         name: Fris
         price: 1.00
         min: 0.20
         max: 4.00
         importanceFactor: 1
-        order: 12
+        order: 4
+        reversion_periods: 400
     27:
         name: 'Fristi/Chocomel'
         price: 1.50
         min: 1.00
         max: 3.50
-        importanceFactor: 1
-        order: 11
+        importanceFactor: 0.2
+        order: 5
+        reversion_periods: 500
     22:
-        name: Witte Wijn
+        name: Wijn
         price: 1.50
         min: 1
         max: 3
-        importanceFactor: 1
-        order: 9
-    164:
-        name: Lustrumbier
-        price: 2.00
-        min: 1
-        max: 3.50
-        importanceFactor: 2
-        order: 3
-    99:
-        name: Malt Bier
-        price: 1.50
-        min: 0.80
-        max: 3
-        importanceFactor: 1
-        order: 10
-    208:
-        name: H41
-        price: 2.50
-        min: 1.00
-        max: 4.50
-        importanceFactor: 2
-        order: 4
+        importanceFactor: 0.6
+        order: 6
+        reversion_periods: 200
     32:
         name: Bitterballen
         price: 3.50
         min: 1.50
         max: 8.00
-        importanceFactor: 0.5
-        order: 13
+        importanceFactor: 0.3
+        order: 12
+        reversion_periods: 500
     56:
         name: Duikbootje
         price: 2.00
         min: 0.80
         max: 3.00
-        importanceFactor: 1
+        importanceFactor: 0.7
         order: 7
+        reversion_periods: 400
     169:
         name: Escalatieminuut
         price: 40.00
-        min: 25.00
+        min: 30.00
         max: 100
-        importanceFactor: 0.01
+        importanceFactor: 0.5
+        order: 13
+        reversion_periods: 2000
+    227:
+        name: Heineken 0.0
+        price: 1.50
+        min: 0.75
+        max: 2.50
+        importanceFactor: 5
+        order: 8
+        reversion_periods: 300
+    156:
+        name: Red Bull
+        price: 2.00
+        min: 1.00
+        max: 4.50
+        importanceFactor: 1
+        order: 9
+        reversion_periods: 500
+    285:
+        name: Old Mout
+        price: 2.00
+        min: 1.00
+        max: 4.50
+        importanceFactor: 1
+        order: 10
+        reversion_periods: 400
+    215:
+        name: Sonnema-mix
+        price: 2.00
+        min: 1.00
+        max: 4.50
+        importanceFactor: 1
+        order: 11
+        reversion_periods: 500
+    218:
+        name: Fust
+        price: 160.00
+        min: 120.00
+        max: 200.00
+        importanceFactor: 0.3
         order: 14
+        reversion_periods: 3000
 movies:
     'bkbGqwZgWzs':
         desc: 'Bier Goedkoper'

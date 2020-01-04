@@ -1,4 +1,4 @@
-let host = 'http://villa.okeanos.nl'
+let host = 'http://localhost'
 let labels = [];
 let priceHistory = {};
 
@@ -56,7 +56,7 @@ let firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // This code loads the products and prepare the presentation layer.
-$.getJSON(host + ':8080/getProducts', function(products) {
+$.getJSON(host + ':80/getProducts', function(products) {
   if (products.length > 14) {
     return console.error('Too many products!');
   }

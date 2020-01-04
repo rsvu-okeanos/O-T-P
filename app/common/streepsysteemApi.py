@@ -9,6 +9,7 @@ class streepsysteemApi(object):
 		self.proxyId = proxyId
 		self.cashUser = cashUser
 		self.s = r.Session()
+		self.s.auth = 
 
 		self.baseUrl = url
 
@@ -16,7 +17,7 @@ class streepsysteemApi(object):
 		self.session = req.cookies['SESSION']
 
 		self.usersLastUpdate = 0
-		self.updateLocalUsers()
+		# self.updateLocalUsers()
 
 	def streep(self, productId, userId):
 		# First we set our session state to the user we whish
@@ -60,8 +61,9 @@ class streepsysteemApi(object):
 
 		response = self.s.get(url, headers=headers, params=querystring)
 
-	def __parseUsersPage(self,raw):
-		tree = etree.fromstring(html.unescape(raw.decode('utf-8')).encode())
+	def __parseUsersPage(self, raw):
+		print(raw)
+		tree = etree.fromstring(html.unescape(raw).encode())
 
 		#We parse the data for the users
 		usersString = tree.xpath('//cmd[@t="user_content"]/text()')
@@ -99,11 +101,11 @@ class streepsysteemApi(object):
 		req = self.s.post(self.baseUrl + "/index.php/select/user", data={"xajax": "reset_search"})
 		if not (searchQuery == None):
 			req = self.s.post(self.baseUrl + "/index.php/select/user", data={"xajax": "search", "xajaxargs[]": searchQuery})
-		return req.content
+		return req.text
 
 	def __nextUsersPage(self):
 		req = self.s.post(self.baseUrl + "/index.php/select/user", data={"xajax": "next_page"})
-		return req.content
+		return req.text
 
 	def updateLocalUsers(self):
 		if self.usersLastUpdate < t.time() - 3600*24:

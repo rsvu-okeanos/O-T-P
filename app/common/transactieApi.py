@@ -14,11 +14,14 @@ class transactieApi(object):
 	def __init__(self, url, streepsysteem):
 		self.url = url
 		self.streepsysteem = streepsysteem
+		self.session = r.Session()
+		self.session.auth = ....
 		self.timeDiff = self.calculateTimeDifference()
 		self.processedIds = []
 		self.processingTimes = []
 
 	def findTransaction(self, transactions, productId, userId):
+
 		for transaction in reversed(transactions):
 			if(transaction['user_id'] == userId and transaction['product_id'] == productId):
 				return transaction
@@ -32,7 +35,7 @@ class transactieApi(object):
 
 		time = t.time()
 
-		transaction = self.findTransaction(	self.getData(time+60, 120),
+		transaction = self.findTransaction(	self.getData(time+60 + 3600, 120 + 7200),
 											self.streepsysteem.proxyId,
 											self.streepsysteem.cashUser)
 
@@ -50,16 +53,17 @@ class transactieApi(object):
 		if(hasattr(self, 'timeDiff')):
 			endTime = endTime - self.timeDiff
 
-		scriptPath = os.path.join(DIR, 'decode.php')
 
-		proc = subprocess.Popen('php "'+scriptPath+'" '+str(endTime-interval)+' '+str(endTime), shell=True, stdout=subprocess.PIPE)
-		scriptResponse = proc.stdout.read()
+		URL = (
+			self.url + '/media/output/export_purchases.php?start_time={start_time}&end_time={end_time}'
+		).format(start_time=endTime-interval, end_time=endTime)
 
-		try:
-			convertedResponse = self.cleanUpResponse(json.loads(scriptResponse.decode('utf8')))
-		except:
-			print(scriptResponse)
-			return []
+		print(URL)
+
+		response = self.session.get(URL)
+
+		print('we are making a request')
+		convertedResponse = self.cleanUpResponse(response.json())
 			
 		return convertedResponse
 
