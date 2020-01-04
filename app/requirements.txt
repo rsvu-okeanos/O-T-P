@@ -1,6 +1,6 @@
 lxml==3.7.1
 numpy==1.11.3
-requests==2.12.4
+requests==2.20.0
 PyYAML==3.12
 flask==0.12
 pyjwt==1.4.2
