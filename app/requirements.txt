@@ -1,4 +1,4 @@
-lxml==3.7.1
+lxml==4.6.2
 numpy==1.11.3
 requests==2.12.4
 PyYAML==3.12
