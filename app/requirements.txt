@@ -1,7 +1,7 @@
 lxml==3.7.1
 numpy==1.11.3
 requests==2.12.4
-PyYAML==3.12
+PyYAML==5.4
 flask==0.12
 pyjwt==1.4.2
 cryptography==1.3
